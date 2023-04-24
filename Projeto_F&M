@@ -1,0 +1,60 @@
+Program Pzim ;
+var
+ContaF, ContaM, TotalIdade, MenorAGEFeminino, MaiorAGEMasculina, Idade, SomaIdade: Integer; //Declarar variáveis em inteiro
+Sexo: Char; //Declarar variável em char
+MediaIdade, PorcentagemMasculino, PorcentagemFeminino: Real; //Declarar variáveis em reais
+Begin
+  ContaF := 0; //Dar valor 0 a variavel, mas quando for executada F será somada
+  ContaM := 0;  //Dar valor 0 a variavel, mas quando for executada M será somada
+  TotalIdade := 0;  //Dar valor 0 a variavel, mas quando for informada a idade será somada
+  SomaIdade := 0; //Dar valor 0 a variavel, mas quando for informada a idade será somada as idades informadas 
+  
+  Writeln('Sexo:');
+  Readln(Sexo); //Receber o valor 
+  
+  While (Sexo <> 'N') do //Caso for diferente de N ele continua executando  
+  begin
+    case (Sexo) of
+	    'F': ContaF := ContaF + 1;  //Caso for F ele soma sempre + 1                              
+	    'M': ContaM := ContaM + 1;  //Caso for M ele soma sempre + 1  
+    end;
+    
+    If (Sexo = 'F') then   //Caso for F
+    begin
+    	Writeln('Idade:');
+    	Readln(Idade);      //Recebe o valor idade
+    	TotalIdade := TotalIdade + 1; //Soma sempre + 1 idade
+    	SomaIdade := SomaIdade + Idade;  //Soma sempre as idades
+      if (Idade < MenorAGEFeminino) then
+      MenorAGEFeminino := Idade; //A menor idade inserida será salva
+    end
+    else if (Sexo = 'M') then
+    begin
+      Writeln('Idade:');
+    	Readln(Idade);   //Recebe o valor idade
+    	TotalIdade := TotalIdade + 1;  //Soma sempre + 1 idade
+    	SomaIdade := SomaIdade + Idade; //Soma sempre as idades
+      if (Idade > MaiorAGEMasculina) then
+      MaiorAGEMasculina := Idade; //A maior idade inserida será salva
+    end
+    else
+    begin
+      Writeln('Inválido');
+    end;
+	
+	  Writeln('Sexo:');
+	  Readln(Sexo);
+  end;
+  
+    MediaIdade := SomaIdade / TotalIdade; //Media das idades inseridas até o momento
+		PorcentagemFeminino := ContaF * 100 / TotalIdade;  //Porcentagem de idade feminina
+		PorcentagemMasculino := ContaM * 100 / TotalIdade; //Porcentagem de idade masculino
+		
+Writeln('Total de pessoas: ', TotalIdade); //Mostrará o total de idade após finalizar o programa
+Writeln('Média de idade: ', MediaIdade:2:2);  //Mostrará a média de idade após finalizar o programa
+Writeln('Porcentagem de mulheres: ', PorcentagemFeminino:2:2, '%'); //Mostrará a porcentagem feminina após finalizar o programa
+Writeln('Porcentagem de homens: ', PorcentagemMasculino:2:2, '%'); //Mostrará a porcentagem masculina após finalizar o programa
+Writeln('Menor idade entre as mulheres: ', MenorAGEFeminino);   //Mostrará a menor idade feminina após finalizar o programa
+Writeln('Maior idade entre os homens: ', MaiorAGEMasculina);  //Mostrará a maior idade masculina após finalizar o programa
+
+End.
